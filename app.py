@@ -86,7 +86,7 @@ def scrape_both(driver1, driver):
 
 
     # Replace with the actual URL where the tables are located
-    driver.get("https://www.tradingview.com/symbols/BTCUSD/technicals/?exchange=CRYPTO")
+    # driver.get("https://www.tradingview.com/symbols/BTCUSD/technicals/?exchange=CRYPTO")
     driver.find_element(By.ID, "1m").click()
 
     # Replace with the actual URL where the tables are located
