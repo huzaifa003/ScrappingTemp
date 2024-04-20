@@ -13,11 +13,17 @@ from selenium.webdriver.common.action_chains import ActionChains
 app = Flask(__name__)
 
 def initialize_driver():
+    # Configure ChromeOptions with desired arguments
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
-    chrome_options.add_argument('chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3")')
+    
+    # Set custom user-agent string
+    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+    chrome_options.add_argument(f'user-agent={user_agent}')
+    
+    # Initialize ChromeDriver using ChromeDriverManager to handle driver installation
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=chrome_options)
     return driver
@@ -25,6 +31,14 @@ def initialize_driver():
 # Initialize drivers and set global variables
 driver1 = initialize_driver()
 driver2 = initialize_driver()
+
+# # Example usage of the initialized drivers
+# driver1.get('https://www.facebook.com')
+# print("Title of Page 1:", driver1.title)
+
+# driver2.get('https://www.google.com')
+# print("Title of Page 2:", driver2.title)
+
 
 
 # Example scraping logic, replace with actual scraping logic
